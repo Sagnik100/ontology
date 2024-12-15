@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:ex="http://example.org/ontology#">
+
+    <owl:Ontology rdf:about="http://example.org/ontology"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://example.org/ontology#NewtonLaw"/>
+    <owl:Class rdf:about="http://example.org/ontology#Force"/>
+    <owl:Class rdf:about="http://example.org/ontology#Mass"/>
+    <owl:Class rdf:about="http://example.org/ontology#Acceleration"/>
+    <owl:Class rdf:about="http://example.org/ontology#Inertia"/>
+    <owl:Class rdf:about="http://example.org/ontology#Experiment"/>
+    <owl:Class rdf:about="http://example.org/ontology#Energy"/>
+    <owl:Class rdf:about="http://example.org/ontology#Work"/>
+    <owl:Class rdf:about="http://example.org/ontology#Power"/>
+    <owl:Class rdf:about="http://example.org/ontology#KineticEnergy"/>
+    <owl:Class rdf:about="http://example.org/ontology#PotentialEnergy"/>
+    <owl:Class rdf:about="http://example.org/ontology#Units"/>
+
+    <!-- Properties -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasForce">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Experiment"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#Force"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasMass">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Experiment"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#Mass"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasAcceleration">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Experiment"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#Acceleration"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#isRelatedTo"/>
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology#hasValue"/>
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#measuredIn"/>
+
+    <!-- Instances of NewtonLaw -->
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#FirstLaw">
+        <rdf:type rdf:resource="http://example.org/ontology#NewtonLaw"/>
+        <rdfs:label>First Law</rdfs:label>
+        <rdfs:comment>An object remains at rest or in uniform motion unless acted upon by an external force.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#SecondLaw">
+        <rdf:type rdf:resource="http://example.org/ontology#NewtonLaw"/>
+        <rdfs:label>Second Law</rdfs:label>
+        <rdfs:comment>Force equals mass times acceleration (F = ma).</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#ThirdLaw">
+        <rdf:type rdf:resource="http://example.org/ontology#NewtonLaw"/>
+        <rdfs:label>Third Law</rdfs:label>
+        <rdfs:comment>For every action, there is an equal and opposite reaction.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <!-- Example Experiment -->
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Experiment1">
+        <rdf:type rdf:resource="http://example.org/ontology#Experiment"/>
+        <rdfs:label>Experiment 1</rdfs:label>
+        <rdfs:comment>An experiment to calculate force using F = ma.</rdfs:comment>
+        <ex:hasMass rdf:resource="http://example.org/ontology#Mass5"/>
+        <ex:hasAcceleration rdf:resource="http://example.org/ontology#Acceleration10"/>
+        <ex:hasForce rdf:resource="http://example.org/ontology#Force50"/>
+    </owl:NamedIndividual>
+
+    <!-- Specific Values -->
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Mass5">
+        <rdf:type rdf:resource="http://example.org/ontology#Mass"/>
+        <rdfs:label>5 kg</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Acceleration10">
+        <rdf:type rdf:resource="http://example.org/ontology#Acceleration"/>
+        <rdfs:label>10 m/s^2</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Force50">
+        <rdf:type rdf:resource="http://example.org/ontology#Force"/>
+        <rdfs:label>50 N</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Energy Example -->
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#EnergyExample">
+        <rdf:type rdf:resource="http://example.org/ontology#Energy"/>
+        <rdfs:label>Kinetic Energy</rdfs:label>
+        <ex:isRelatedTo rdf:resource="http://example.org/ontology#Work"/>
+        <ex:isRelatedTo rdf:resource="http://example.org/ontology#Power"/>
+    </owl:NamedIndividual>
+
+    <!-- Rules -->
+    <rdf:Description rdf:about="http://example.org/ontology#SecondLawRule">
+        <rdfs:comment>If Mass and Acceleration are known, Force = Mass * Acceleration.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/ontology#KineticEnergyRule">
+        <rdfs:comment>Kinetic Energy = 0.5 * Mass * Velocity^2.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/ontology#WorkRule">
+        <rdfs:comment>Work = Force * Displacement * cos(theta).</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/ontology#PowerRule">
+        <rdfs:comment>Power = Work / Time.</rdfs:comment>
+    </rdf:Description>
+
+</rdf:RDF>
